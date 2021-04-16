@@ -536,14 +536,6 @@ localhost:3000/checkUserFoodSafe/2/1/1
 ```
 
 
-
-
-
-
-
-
-
-
 ### test data (ingredients)
 ```
 
