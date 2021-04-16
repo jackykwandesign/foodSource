@@ -59,25 +59,480 @@ data return
   religionSafe:boolean
   foodNewsSafe:boolean
 ```
-```
+
 checkUserFoodSafe --- Prawn allergy 
 localhost:3000/checkUserFoodSafe/1/2/2
-
+```
+{
+    "user": {
+        "id": 2,
+        "allergies": [
+            {
+                "name_ch": "花生",
+                "name_en": "peanuts",
+                "nutritionElement": []
+            }
+        ]
+    },
+    "shopID": "1",
+    "dishes": {
+        "id": 2,
+        "name_ch": "哈哈哈沙律",
+        "name_en": "Prawn Salad",
+        "calories": 266,
+        "foodSource": [
+            {
+                "ingredient": {
+                    "name_ch": "蝦",
+                    "name_en": "prawn",
+                    "nutritionElement": []
+                },
+                "from": "JAPAN"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "牛油",
+                    "name_en": "butter",
+                    "nutritionElement": []
+                },
+                "from": "AUSTRILIA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "花生",
+                    "name_en": "peanuts",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "千島醬",
+                    "name_en": "Thousand Island dressing",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            }
+        ]
+    },
+    "foundAllergies": [
+        {
+            "name_ch": "花生",
+            "name_en": "peanuts",
+            "nutritionElement": []
+        }
+    ],
+    "foundReligionNotAllow": [],
+    "foundFoodNews": [],
+    "allergySafe": false,
+    "religionSafe": true,
+    "foodNewsSafe": true
+}
+```
 
 checkUserFoodSafe --- Beef Rice Noodle --- Islam --- lard 
 localhost:3000/checkUserFoodSafe/1/1/1
-
+```
+{
+    "user": {
+        "id": 1,
+        "allergies": [],
+        "religion": {
+            "name_en": "Islam",
+            "name_ch": "伊斯蘭教",
+            "notAllow": [
+                {
+                    "name_ch": "豬肉",
+                    "name_en": "pork",
+                    "nutritionElement": []
+                },
+                {
+                    "name_ch": "豬油",
+                    "name_en": "lard",
+                    "nutritionElement": []
+                }
+            ]
+        }
+    },
+    "shopID": "1",
+    "dishes": {
+        "id": 1,
+        "name_ch": "干炒牛河",
+        "name_en": "Stir-fried Beef Rice Noodles",
+        "calories": 1050,
+        "foodSource": [
+            {
+                "ingredient": {
+                    "name_ch": "蛋",
+                    "name_en": "egg",
+                    "nutritionElement": []
+                },
+                "from": "AUSTRILIA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "牛肉",
+                    "name_en": "beef",
+                    "nutritionElement": []
+                },
+                "from": "USA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "芽菜",
+                    "name_en": "Sprouts",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "河粉",
+                    "name_en": "Flat Rice Noodles ",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "芝麻",
+                    "name_en": "sesame",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "酱油",
+                    "name_en": "soy Sause",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "豬油",
+                    "name_en": "lard",
+                    "nutritionElement": []
+                },
+                "from": "AFRICA"
+            }
+        ]
+    },
+    "foundAllergies": [],
+    "foundReligionNotAllow": [
+        {
+            "name_ch": "豬油",
+            "name_en": "lard",
+            "nutritionElement": []
+        }
+    ],
+    "foundFoodNews": [
+        {
+            "content_en": "Mad cow disease in USA",
+            "content_ch": "美國有牛隻感染狂牛症",
+            "foodSource": [
+                {
+                    "ingredient": {
+                        "name_ch": "牛肉",
+                        "name_en": "beef",
+                        "nutritionElement": []
+                    },
+                    "from": "USA"
+                }
+            ],
+            "alertLevel": "HIGH"
+        }
+    ],
+    "allergySafe": true,
+    "religionSafe": false,
+    "foodNewsSafe": false
+}
+```
 
 checkUserFoodSafe --- Beef Rice Noodle --- Islam Safe 
 localhost:3000/checkUserFoodSafe/2/1/1
+```
+{
+    "user": {
+        "id": 1,
+        "allergies": [],
+        "religion": {
+            "name_en": "Islam",
+            "name_ch": "伊斯蘭教",
+            "notAllow": [
+                {
+                    "name_ch": "豬肉",
+                    "name_en": "pork",
+                    "nutritionElement": []
+                },
+                {
+                    "name_ch": "豬油",
+                    "name_en": "lard",
+                    "nutritionElement": []
+                }
+            ]
+        }
+    },
+    "shopID": "2",
+    "dishes": {
+        "id": 1,
+        "name_ch": "干炒牛河",
+        "name_en": "Stir-fried Beef Rice Noodles",
+        "calories": 800,
+        "foodSource": [
+            {
+                "ingredient": {
+                    "name_ch": "牛肉",
+                    "name_en": "beef",
+                    "nutritionElement": []
+                },
+                "from": "AUSTRILIA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "芽菜",
+                    "name_en": "Sprouts",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "河粉",
+                    "name_en": "Flat Rice Noodles ",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "酱油",
+                    "name_en": "soy Sause",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "洋蔥",
+                    "name_en": "onion",
+                    "nutritionElement": []
+                },
+                "from": "USA"
+            }
+        ]
+    },
+    "foundAllergies": [],
+    "foundReligionNotAllow": [],
+    "foundFoodNews": [],
+    "allergySafe": true,
+    "religionSafe": true,
+    "foodNewsSafe": true
+}
+```
 
 
 checkUserFoodSafe --- Beef Rice Noodle --- Mad Beef USA foodNews --- Shop1 Use Beef USA
 localhost:3000/checkUserFoodSafe/1/1/1
-
+```
+{
+    "user": {
+        "id": 1,
+        "allergies": [],
+        "religion": {
+            "name_en": "Islam",
+            "name_ch": "伊斯蘭教",
+            "notAllow": [
+                {
+                    "name_ch": "豬肉",
+                    "name_en": "pork",
+                    "nutritionElement": []
+                },
+                {
+                    "name_ch": "豬油",
+                    "name_en": "lard",
+                    "nutritionElement": []
+                }
+            ]
+        }
+    },
+    "shopID": "1",
+    "dishes": {
+        "id": 1,
+        "name_ch": "干炒牛河",
+        "name_en": "Stir-fried Beef Rice Noodles",
+        "calories": 1050,
+        "foodSource": [
+            {
+                "ingredient": {
+                    "name_ch": "蛋",
+                    "name_en": "egg",
+                    "nutritionElement": []
+                },
+                "from": "AUSTRILIA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "牛肉",
+                    "name_en": "beef",
+                    "nutritionElement": []
+                },
+                "from": "USA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "芽菜",
+                    "name_en": "Sprouts",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "河粉",
+                    "name_en": "Flat Rice Noodles ",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "芝麻",
+                    "name_en": "sesame",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "酱油",
+                    "name_en": "soy Sause",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "豬油",
+                    "name_en": "lard",
+                    "nutritionElement": []
+                },
+                "from": "AFRICA"
+            }
+        ]
+    },
+    "foundAllergies": [],
+    "foundReligionNotAllow": [
+        {
+            "name_ch": "豬油",
+            "name_en": "lard",
+            "nutritionElement": []
+        }
+    ],
+    "foundFoodNews": [
+        {
+            "content_en": "Mad cow disease in USA",
+            "content_ch": "美國有牛隻感染狂牛症",
+            "foodSource": [
+                {
+                    "ingredient": {
+                        "name_ch": "牛肉",
+                        "name_en": "beef",
+                        "nutritionElement": []
+                    },
+                    "from": "USA"
+                }
+            ],
+            "alertLevel": "HIGH"
+        }
+    ],
+    "allergySafe": true,
+    "religionSafe": false,
+    "foodNewsSafe": false
+}
+```
 
 checkUserFoodSafe --- Beef Rice Noodle --- Mad Beef USA foodNews --- Shop1 Use Beef Austrlia
 localhost:3000/checkUserFoodSafe/2/1/1
+```
+{
+    "user": {
+        "id": 1,
+        "allergies": [],
+        "religion": {
+            "name_en": "Islam",
+            "name_ch": "伊斯蘭教",
+            "notAllow": [
+                {
+                    "name_ch": "豬肉",
+                    "name_en": "pork",
+                    "nutritionElement": []
+                },
+                {
+                    "name_ch": "豬油",
+                    "name_en": "lard",
+                    "nutritionElement": []
+                }
+            ]
+        }
+    },
+    "shopID": "2",
+    "dishes": {
+        "id": 1,
+        "name_ch": "干炒牛河",
+        "name_en": "Stir-fried Beef Rice Noodles",
+        "calories": 800,
+        "foodSource": [
+            {
+                "ingredient": {
+                    "name_ch": "牛肉",
+                    "name_en": "beef",
+                    "nutritionElement": []
+                },
+                "from": "AUSTRILIA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "芽菜",
+                    "name_en": "Sprouts",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "河粉",
+                    "name_en": "Flat Rice Noodles ",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "酱油",
+                    "name_en": "soy Sause",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "洋蔥",
+                    "name_en": "onion",
+                    "nutritionElement": []
+                },
+                "from": "USA"
+            }
+        ]
+    },
+    "foundAllergies": [],
+    "foundReligionNotAllow": [],
+    "foundFoodNews": [],
+    "allergySafe": true,
+    "religionSafe": true,
+    "foodNewsSafe": true
+}
 ```
 
 
