@@ -1,26 +1,344 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## API CALL
+https://www.getpostman.com/collections/416e18bb5bdb4b0405dd
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### API GET food news localhost:3000/foodNews
+```
+[
+    {
+        "content_en": "Mad cow disease in USA",
+        "content_ch": "美國有牛隻感染狂牛症",
+        "foodSource": [
+            {
+                "ingredient": {
+                    "name_ch": "牛肉",
+                    "name_en": "beef",
+                    "nutritionElement": []
+                },
+                "from": "USA"
+            }
+        ],
+        "alertLevel": "HIGH"
+    },
+    {
+        "content_en": "Asfarviridae Happened in Africa and China",
+        "content_ch": "非洲豬瘟出現病毒新變種, 在中國大陸地區流行，暫時對人類無害",
+        "foodSource": [
+            {
+                "ingredient": {
+                    "name_ch": "豬肉",
+                    "name_en": "pork",
+                    "nutritionElement": []
+                },
+                "from": "CHINA"
+            },
+            {
+                "ingredient": {
+                    "name_ch": "豬肉",
+                    "name_en": "pork",
+                    "nutritionElement": []
+                },
+                "from": "AFRICA"
+            }
+        ],
+        "alertLevel": "LOW"
+    }
+]
+```
+
+### API @Get('/checkUserFoodSafe/:shopID/:dishID/:userID')
+data return
+```
+  user
+  shopID
+  dishes,
+  foundAllergies:Ingredient
+  foundReligionNotAllow:Ingredient
+  foundFoodNews:FoodSource
+  allergySafe:boolean
+  religionSafe:boolean
+  foodNewsSafe:boolean
+```
+```
+checkUserFoodSafe --- Prawn allergy 
+localhost:3000/checkUserFoodSafe/1/2/2
+
+
+checkUserFoodSafe --- Beef Rice Noodle --- Islam --- lard 
+localhost:3000/checkUserFoodSafe/1/1/1
+
+
+checkUserFoodSafe --- Beef Rice Noodle --- Islam Safe 
+localhost:3000/checkUserFoodSafe/2/1/1
+
+
+checkUserFoodSafe --- Beef Rice Noodle --- Mad Beef USA foodNews --- Shop1 Use Beef USA
+localhost:3000/checkUserFoodSafe/1/1/1
+
+
+checkUserFoodSafe --- Beef Rice Noodle --- Mad Beef USA foodNews --- Shop1 Use Beef Austrlia
+localhost:3000/checkUserFoodSafe/2/1/1
+```
+
+
+
+
+
+
+
+
+
+
+### test data (ingredients)
+```
+
+const egg:Ingredient = {
+  name_ch:"蛋",
+  name_en:"egg",
+  // from:Country.USA,
+  nutritionElement:[]
+}
+const beef:Ingredient = {
+  name_ch:"牛肉",
+  name_en:"beef",
+  // from:Country.AUSTRILIA,
+  nutritionElement:[]
+}
+const pork:Ingredient = {
+  name_ch:"豬肉",
+  name_en:"pork",
+  // from:Country.USA,
+  nutritionElement:[]
+}
+const lard:Ingredient = {
+  name_ch:"豬油",
+  name_en:"lard",
+  // from:Country.CHINA,
+  nutritionElement:[]
+}
+const peanuts:Ingredient = {
+  name_ch:"花生",
+  name_en:"peanuts",
+  // from:Country.CHINA,
+  nutritionElement:[]
+}
+const flatRiceNoodle:Ingredient = {
+  name_ch:"河粉",
+  name_en:"Flat Rice Noodles ",
+  // from:Country.CHINA,
+  nutritionElement:[]
+}
+const sesame:Ingredient = {
+  name_ch:"芝麻",
+  name_en:"sesame",
+  // from:Country.CHINA,
+  nutritionElement:[]
+}
+const soySause:Ingredient = {
+  name_ch:"酱油",
+  name_en:"soy Sause",
+  // from:Country.CHINA,
+  nutritionElement:[]
+}
+const sprouts:Ingredient = {
+  name_ch:"芽菜",
+  name_en:"Sprouts",
+  // from:Country.CHINA,
+  nutritionElement:[]
+}
+const onion:Ingredient = {
+  name_ch:"洋蔥",
+  name_en:"onion",
+  // from:Country.CHINA,
+  nutritionElement:[]
+}
+
+const prawn:Ingredient = {
+  name_ch:"蝦",
+  name_en:"prawn",
+  // from:Country.JAPAN,
+  nutritionElement:[]
+}
+const butter:Ingredient = {
+  name_ch:"牛油",
+  name_en:"butter",
+  // from:Country.AUSTRILIA,
+  nutritionElement:[]
+}
+const thousandIslandDressing:Ingredient = {
+  name_ch:"千島醬",
+  name_en:"Thousand Island dressing",
+  // from:Country.JAPAN,
+  nutritionElement:[]
+}
+```
+
+### test data (dishes)
+```
+const stirFriedBeefRiceNoodlesA:Dishes = {
+  id:1,
+  name_ch:"干炒牛河",
+  name_en:"Stir-fried Beef Rice Noodles",
+  calories: 1050,
+  foodSource:[
+    {
+      ingredient:egg,
+      from:Country.AUSTRILIA
+    },
+    {
+      ingredient:beef,
+      from:Country.USA
+    },
+    {
+      ingredient:sprouts,
+      from:Country.CHINA
+    },
+    {
+      ingredient:flatRiceNoodle,
+      from:Country.CHINA
+    },
+    {
+      ingredient:sesame,
+      from:Country.CHINA
+    },
+    {
+      ingredient:soySause,
+      from:Country.CHINA
+    },
+    {
+      ingredient:lard,
+      from:Country.AFRICA
+    },
+  ],
+  // religionSafe:[]
+}
+
+const stirFriedBeefRiceNoodlesB:Dishes = {
+  id:1,
+  name_ch:"干炒牛河",
+  name_en:"Stir-fried Beef Rice Noodles",
+  calories: 800,
+  foodSource:[
+    {
+      ingredient:beef,
+      from:Country.AUSTRILIA
+    },
+    {
+      ingredient:sprouts,
+      from:Country.CHINA
+    },
+    {
+      ingredient:flatRiceNoodle,
+      from:Country.CHINA
+    },
+    {
+      ingredient:soySause,
+      from:Country.CHINA
+    },
+    {
+      ingredient:onion,
+      from:Country.USA
+    }
+  ],
+  // religionSafe:[]
+}
+
+const prawnSaladA:Dishes = {
+  id:2,
+  name_ch:"哈哈哈沙律",
+  name_en:"Prawn Salad",
+  calories: 266,
+  foodSource:[
+    {
+      ingredient:prawn,
+      from:Country.JAPAN
+    },
+    {
+      ingredient:butter,
+      from:Country.AUSTRILIA
+    },
+    {
+      ingredient:peanuts,
+      from:Country.CHINA
+    },
+    {
+      ingredient:thousandIslandDressing,
+      from:Country.CHINA
+    },
+  ],
+  // religionSafe:[]
+}
+```
+
+### test data (shop)
+```
+const shopA:Shop = {
+  id:1,
+  name_ch:"好好味餐廳",
+  name_en:"Yummy Restaurant",
+  dishes:[
+    stirFriedBeefRiceNoodlesA,
+    prawnSaladA
+  ]
+}
+
+const shopB:Shop = {
+  id:2,
+  name_ch:"好營養冰室",
+  name_en:"Good Cafe",
+  dishes:[
+    stirFriedBeefRiceNoodlesB
+  ]
+}
+```
+
+### test data (user, one Islam && one peanuts allergies)
+```
+const userA:User = {
+  id:1,
+  allergies:[],
+  religion:Islam
+}
+
+const userB:User = {
+  id:2,
+  allergies:[
+    peanuts
+  ],
+  religion:undefined
+}
+```
+
+### test data (food news)
+```
+const foodNewUSABeef:FoodNews = {
+  content_en:"Mad cow disease in USA",
+  content_ch:"美國有牛隻感染狂牛症",
+  foodSource:[
+    {
+      ingredient:beef,
+      from:Country.USA
+    }
+  ],
+  alertLevel:AlertLevel.HIGH
+}
+
+const foodNewAfricaPork:FoodNews = {
+  content_en:"Asfarviridae Happened in Africa and China",
+  content_ch:"非洲豬瘟出現病毒新變種, 在中國大陸地區流行，暫時對人類無害",
+  foodSource:[
+    {
+      ingredient:pork,
+      from:Country.CHINA
+    },
+    {
+      ingredient:pork,
+      from:Country.AFRICA
+    }
+  ],
+  alertLevel:AlertLevel.LOW
+}
+```
 
 ## Description
 
@@ -41,33 +359,5 @@ $ npm run start
 # watch mode
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
