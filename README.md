@@ -60,7 +60,7 @@ data return
   foodNewsSafe:boolean
 ```
 
-checkUserFoodSafe --- Prawn allergy 
+checkUserFoodSafe --- Prawn allergy  
 localhost:3000/checkUserFoodSafe/1/2/2
 ```
 {
@@ -130,7 +130,7 @@ localhost:3000/checkUserFoodSafe/1/2/2
 }
 ```
 
-checkUserFoodSafe --- Beef Rice Noodle --- Islam --- lard 
+checkUserFoodSafe --- Beef Rice Noodle --- Islam --- lard  
 localhost:3000/checkUserFoodSafe/1/1/1
 ```
 {
@@ -250,7 +250,7 @@ localhost:3000/checkUserFoodSafe/1/1/1
 }
 ```
 
-checkUserFoodSafe --- Beef Rice Noodle --- Islam Safe 
+checkUserFoodSafe --- Beef Rice Noodle --- Islam Safe  
 localhost:3000/checkUserFoodSafe/2/1/1
 ```
 {
@@ -333,7 +333,7 @@ localhost:3000/checkUserFoodSafe/2/1/1
 ```
 
 
-checkUserFoodSafe --- Beef Rice Noodle --- Mad Beef USA foodNews --- Shop1 Use Beef USA
+checkUserFoodSafe --- Beef Rice Noodle --- Mad Beef USA foodNews --- Shop1 Use Beef USA  
 localhost:3000/checkUserFoodSafe/1/1/1
 ```
 {
@@ -453,7 +453,7 @@ localhost:3000/checkUserFoodSafe/1/1/1
 }
 ```
 
-checkUserFoodSafe --- Beef Rice Noodle --- Mad Beef USA foodNews --- Shop1 Use Beef Austrlia
+checkUserFoodSafe --- Beef Rice Noodle --- Mad Beef USA foodNews --- Shop1 Use Beef Austrlia  
 localhost:3000/checkUserFoodSafe/2/1/1
 ```
 {
